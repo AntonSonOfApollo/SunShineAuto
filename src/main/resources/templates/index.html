@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/page-layout.html :: page-head"></head>
+<body>
+
+<th:block th:replace="layout/page-layout.html :: page-header(page='index')"/>
+
+<div class="col-md-8 offset-md-2 text-center">
+
+<h1 >Добро пожаловать!</h1>
+
+<h4><a th:href="@{/car}">Хочу купить автомобиль</a></h4>
+<h4><a th:href="@{/order}">Хочу продать автомобиль</a></h4>
+
+
+</div>
+
+
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

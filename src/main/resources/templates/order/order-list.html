@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/page-layout.html :: page-head"></head>
+<body>
+
+<th:block th:replace="layout/page-layout.html :: page-header(page='order')"/>
+<div class="container-fluid text-center">
+
+    <h1>Заказы </h1>
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+        <tr>
+            <th>Название</th>
+            <th>Описание заказа</th>
+            <th>Машина</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="order: ${orders}">
+            <td>[[${order.name}]]</td>
+            <td>[[${order.description}]]</td>
+            <td>[[${order.car.getName()}]]</td>
+            <td>
+                <a th:href="@{'/order/delete/' + ${order.id}}" class="btn btn-danger">Удалить</a>
+                <a th:href="@{'/order/update/' + ${order.id}}" class="btn btn-primary">Редактировать</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h4><a th:href="@{/}">На главную</a> </h4>
+</div>
+
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:insert="layout/page-layout.html :: page-head"></head>
+<body>
+
+<th:block th:replace="layout/page-layout.html :: page-header(page='car')"/>
+
+<div class="container-fluid text-center">
+
+    <h1>Каталог Автомобилей</h1>
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+        <tr>
+            <th>№</th>
+            <th>Название</th>
+            <th>Год выпуска</th>
+            <th>Описание</th>
+            <th>Владелец</th>
+            <th>Цена</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="car: ${cars}">
+            <td>[[${car.id}]]</td>
+            <td>[[${car.name}]]</td>
+            <td>[[${car.year}]]</td>
+            <td>[[${car.description}]]</td>
+            <td>[[${car.owner.getName()}]]</td>
+            <td>[[${car.price}]]</td>
+            <td>
+                <a th:href="@{'/car/delete/' + ${car.id}}" class="btn btn-danger">Удалить</a>
+                <a th:href="@{'/car/update/' + ${car.id}}" class="btn btn-primary">Редактировать</a>
+                <a th:href="@{'/car/' + ${car.id}}" class="btn btn-success">Просмотр</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h4><a th:href="@{/}">На главную</a> </h4>
+
+</div>
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>

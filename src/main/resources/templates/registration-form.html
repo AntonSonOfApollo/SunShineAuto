@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/page-layout.html :: page-head-login"></head>
+<body style="padding-top: 0;">
+<th:block th:replace="layout/page-layout.html :: page-header(page='index')"/>
+
+<div class="content container">
+    <form class="form-signin" method="post" th:action="@{/user/register}" th:object="${userRegistrationForm}">
+        <h2 class="form-signin-heading">Регистрация</h2>
+        <p>
+            <label for="login" class="sr-only">Придумайте логин</label>
+            <input type="text" id="login" th:field="*{login}" class="form-control" placeholder="Логин"
+                   required autofocus minlength="1">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Придумайте пароль</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Пароль"
+                   required>
+        </p>
+        <p>
+            <label for="password-confirmation" class="sr-only">Повторите пароль</label>
+            <input type="password" id="password-confirmation" th:field="*{passwordConfirmation}"
+                   class="form-control" placeholder="подтвердите пароль" required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+    </form>
+    <th:block th:replace="layout/page-layout.html :: page-message"/>
+</div>
+
+<th:block th:replace="layout/page-layout.html :: page-footer"/>
+</body>
+</html>
